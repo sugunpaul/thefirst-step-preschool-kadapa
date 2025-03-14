@@ -3,44 +3,64 @@ import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Palette, Music, Shapes, BookOpen, Atom, Users } from "lucide-react";
 import AnimatedElement from "./AnimatedElement";
+import { Card, CardContent } from "@/components/ui/card";
 
 const activities = [
   {
     icon: <Palette className="h-8 w-8 text-primary" />,
     title: "Arts & Crafts",
     description: "Creative expression through various art mediums and crafting projects.",
+    color: "bg-blue-50 border-blue-200",
+    tagline: "We Care for Your Children",
   },
   {
     icon: <Music className="h-8 w-8 text-primary" />,
     title: "Music & Movement",
     description: "Rhythm, dance, and musical instruments to develop coordination and expression.",
+    color: "bg-blue-50 border-blue-200",
+    tagline: "Loving Your Children",
   },
   {
     icon: <Shapes className="h-8 w-8 text-secondary" />,
     title: "Sensory Play",
     description: "Tactile experiences that stimulate cognitive development and curiosity.",
+    color: "bg-yellow-50 border-yellow-200",
+    tagline: "We Care for Your Children",
   },
   {
     icon: <BookOpen className="h-8 w-8 text-secondary" />,
     title: "Story Time",
     description: "Language development through engaging stories and interactive reading.",
+    color: "bg-yellow-50 border-yellow-200",
+    tagline: "Loving Your Children",
   },
   {
     icon: <Atom className="h-8 w-8 text-accent" />,
     title: "Science Exploration",
     description: "Age-appropriate experiments that introduce scientific concepts in fun ways.",
+    color: "bg-green-50 border-green-200",
+    tagline: "We Care for Your Children",
   },
   {
     icon: <Users className="h-8 w-8 text-accent" />,
     title: "Social Play",
     description: "Guided activities to develop social skills, sharing, and cooperation.",
+    color: "bg-green-50 border-green-200",
+    tagline: "Loving Your Children",
   },
 ];
 
 const ChildrenActivities = () => {
   return (
-    <section id="activities" className="py-20 bg-gradient-to-b from-white to-blue-50">
-      <div className="section-container">
+    <section id="activities" className="py-20 relative overflow-hidden">
+      {/* Animated background with diverse children illustration */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute w-[300px] h-[300px] top-10 left-10 rounded-full bg-blue-300 animate-float blur-3xl"></div>
+        <div className="absolute w-[200px] h-[200px] bottom-10 right-20 rounded-full bg-green-200 animate-float blur-3xl" style={{ animationDelay: "2s" }}></div>
+        <div className="absolute w-[250px] h-[250px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-200 animate-float blur-3xl" style={{ animationDelay: "1s" }}></div>
+      </div>
+      
+      <div className="section-container relative z-10">
         <AnimatedElement animation="slide-up" delay={100}>
           <div className="text-center mb-16">
             <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">
@@ -59,17 +79,22 @@ const ChildrenActivities = () => {
               animation="scale-in" 
               delay={150 + index * 50}
             >
-              <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
-                <div className="flex items-start mb-4">
-                  <div className="p-3 rounded-full bg-primary/10 mr-4">
-                    {activity.icon}
+              <Card className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${activity.color} border-2`}>
+                <CardContent className="p-6">
+                  <div className="flex items-start mb-4">
+                    <div className="p-3 rounded-full bg-white shadow-sm mr-4">
+                      {activity.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-display font-semibold text-lg mb-2">{activity.title}</h3>
+                      <p className="text-muted-foreground">{activity.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-display font-semibold text-lg mb-2">{activity.title}</h3>
-                    <p className="text-muted-foreground">{activity.description}</p>
-                  </div>
-                </div>
-              </div>
+                  <p className="text-sm italic text-right font-medium text-primary mt-4">
+                    {activity.tagline}
+                  </p>
+                </CardContent>
+              </Card>
             </AnimatedElement>
           ))}
         </div>
@@ -90,7 +115,7 @@ const ChildrenActivities = () => {
                 <AvatarFallback>CH</AvatarFallback>
               </Avatar>
             </div>
-            <p className="text-muted-foreground italic">
+            <p className="text-muted-foreground italic font-serif text-lg">
               "Our curriculum is designed to engage, inspire, and develop well-rounded individuals."
             </p>
           </div>

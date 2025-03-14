@@ -42,7 +42,7 @@ const Hero = () => {
           </AnimatedElement>
 
           <AnimatedElement animation="slide-up" delay={400}>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 mb-8">
               <a
                 href="#contact"
                 className="px-6 py-3 rounded-full bg-primary text-white font-medium transition-all hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1"
@@ -55,6 +55,33 @@ const Hero = () => {
               >
                 Learn More
               </a>
+            </div>
+          </AnimatedElement>
+          
+          {/* Children Images */}
+          <AnimatedElement animation="scale-in" delay={500}>
+            <div className="flex justify-start gap-3 overflow-hidden">
+              <div className="h-16 w-16 md:h-20 md:w-20 bg-white rounded-full border-2 border-primary/20 overflow-hidden shadow-md hover:scale-105 transition-transform">
+                <img
+                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=250&h=250&q=80"
+                  alt="Child learning with technology"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="h-16 w-16 md:h-20 md:w-20 bg-white rounded-full border-2 border-secondary/20 overflow-hidden shadow-md hover:scale-105 transition-transform">
+                <img
+                  src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=250&h=250&q=80"
+                  alt="Children in group activity"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="h-16 w-16 md:h-20 md:w-20 bg-white rounded-full border-2 border-accent/20 overflow-hidden shadow-md hover:scale-105 transition-transform">
+                <img
+                  src="https://images.unsplash.com/photo-1517022812141-3ac40a15d1ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=250&h=250&q=80"
+                  alt="Children playing outdoors"
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </div>
           </AnimatedElement>
         </div>

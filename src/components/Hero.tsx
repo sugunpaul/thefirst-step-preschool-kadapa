@@ -12,13 +12,12 @@ const Hero = () => {
     >
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
         <img
           src="/lovable-uploads/7c7be02d-904d-4b1d-ba75-0694a4f68af7.png"
           alt="Happy children playing"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-white" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white" />
       </div>
       
       {/* Decorative circles */}

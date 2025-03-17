@@ -1,9 +1,11 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Palette, Music, Shapes, BookOpen, Atom, Users } from "lucide-react";
 import AnimatedElement from "./AnimatedElement";
 import { Card, CardContent } from "@/components/ui/card";
+import ActivityModal from "./ActivityModal";
+import { ActivityType } from "@/types/activity";
 
 const activities = [
   {
@@ -51,6 +53,18 @@ const activities = [
 ];
 
 const ChildrenActivities = () => {
+  const [selectedActivity, setSelectedActivity] = useState<ActivityType | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openActivityModal = (activity: ActivityType) => {
+    setSelectedActivity(activity);
+    setIsModalOpen(true);
+  };
+
+  const closeActivityModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <section id="activities" className="py-20 relative overflow-hidden">
       {/* Animated background with diverse children illustration */}
@@ -79,7 +93,10 @@ const ChildrenActivities = () => {
               animation="scale-in" 
               delay={150 + index * 50}
             >
-              <Card className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${activity.color} border-2`}>
+              <Card 
+                className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${activity.color} border-2 cursor-pointer`}
+                onClick={() => openActivityModal(activity)}
+              >
                 <CardContent className="p-6">
                   <div className="flex items-start mb-4">
                     <div className="p-3 rounded-full bg-white shadow-sm mr-4">
@@ -121,6 +138,13 @@ const ChildrenActivities = () => {
           </div>
         </AnimatedElement>
       </div>
+
+      {/* Activity Modal */}
+      <ActivityModal 
+        activity={selectedActivity} 
+        isOpen={isModalOpen} 
+        onClose={closeActivityModal} 
+      />
     </section>
   );
 };

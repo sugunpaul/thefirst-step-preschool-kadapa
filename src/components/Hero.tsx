@@ -10,24 +10,32 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden pt-16"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-white -z-10" />
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
+        <img
+          src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80"
+          alt="Happy children playing"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-white" />
+      </div>
       
       {/* Decorative circles */}
-      <div className="absolute top-20 left-[10%] h-64 w-64 rounded-full bg-primary/5 -z-10" />
-      <div className="absolute top-40 right-[5%] h-96 w-96 rounded-full bg-secondary/5 -z-10" />
-      <div className="absolute bottom-10 left-[20%] h-40 w-40 rounded-full bg-accent/5 -z-10" />
+      <div className="absolute top-20 left-[10%] h-64 w-64 rounded-full bg-primary/5 -z-5" />
+      <div className="absolute top-40 right-[5%] h-96 w-96 rounded-full bg-secondary/5 -z-5" />
+      <div className="absolute bottom-10 left-[20%] h-40 w-40 rounded-full bg-accent/5 -z-5" />
 
       <div className="section-container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div className="order-2 lg:order-1">
+        <div className="order-2 lg:order-1 z-10">
           <AnimatedElement animation="slide-down" delay={100}>
-            <div className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-6">
+            <div className="inline-flex items-center rounded-full bg-white/80 backdrop-blur-sm px-3 py-1 text-sm font-medium text-primary mb-6 shadow-sm">
               <span className="mr-1">✨</span> Nurturing young minds
             </div>
           </AnimatedElement>
 
           <AnimatedElement animation="slide-up" delay={200}>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
               Where{" "}
               <span className="text-gradient">Learning</span>{" "}
               Becomes an Adventure

@@ -1,11 +1,13 @@
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, TreeDeciduous } from "lucide-react";
+import { Menu, X, TreeDeciduous, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   const navItems = [
     { label: "Home", href: "#home" },
@@ -51,6 +53,18 @@ const Header = () => {
             </div>
           </a>
 
+          {/* Contact Number */}
+          <a 
+            href="tel:9493866446" 
+            className={cn(
+              "flex items-center gap-1.5 text-sm font-medium",
+              isMobile ? "ml-auto mr-4" : "hidden md:flex"
+            )}
+          >
+            <Phone className="h-4 w-4 text-primary" />
+            <span className="hidden sm:inline">949-386-6446</span>
+          </a>
+
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
@@ -93,6 +107,10 @@ const Header = () => {
               {item.label}
             </a>
           ))}
+          <a href="tel:9493866446" className="flex items-center gap-2 font-medium text-lg">
+            <Phone className="h-5 w-5 text-primary" />
+            <span>949-386-6446</span>
+          </a>
         </nav>
       </div>
     </header>

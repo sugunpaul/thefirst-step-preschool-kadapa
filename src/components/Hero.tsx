@@ -1,7 +1,7 @@
 
 import React from "react";
 import { cn } from "@/lib/utils";
-import { TreeDeciduous } from "lucide-react";
+import { Shield, Heart } from "lucide-react";
 import AnimatedElement from "./AnimatedElement";
 
 const Hero = () => {
@@ -14,7 +14,7 @@ const Hero = () => {
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
         <img
-          src="https://images.unsplash.com/photo-1566454544259-f4b94c3d758c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80"
+          src="/lovable-uploads/7c7be02d-904d-4b1d-ba75-0694a4f68af7.png"
           alt="Happy children playing"
           className="w-full h-full object-cover"
         />
@@ -26,90 +26,71 @@ const Hero = () => {
       <div className="absolute top-40 right-[5%] h-96 w-96 rounded-full bg-secondary/5 -z-5" />
       <div className="absolute bottom-10 left-[20%] h-40 w-40 rounded-full bg-accent/5 -z-5" />
 
-      <div className="section-container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div className="order-2 lg:order-1 z-10">
-          <AnimatedElement animation="slide-down" delay={100}>
-            <div className="inline-flex items-center rounded-full bg-white/80 backdrop-blur-sm px-3 py-1 text-sm font-medium text-primary mb-6 shadow-sm">
-              <span className="mr-1">✨</span> Nurturing young minds
+      <div className="section-container grid grid-cols-1 lg:grid-cols-1 gap-12 items-center">
+        <div className="z-10 text-center mx-auto max-w-4xl">
+          <AnimatedElement animation="scale-in" delay={100}>
+            <div className="inline-flex items-center rounded-full bg-blue-100/80 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-primary mb-6 shadow-sm">
+              <span className="mr-1">✨</span> Welcome to FirstStep Pre School
             </div>
           </AnimatedElement>
 
           <AnimatedElement animation="slide-up" delay={200}>
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
-              Where{" "}
-              <span className="text-gradient">Learning</span>{" "}
-              Becomes an Adventure
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+              Where Learning{" "}
+              <span className="text-blue-400">Begins</span>{" "}
+              <br />With{" "}
+              <span className="text-pink-400">Love</span>
             </h1>
           </AnimatedElement>
 
           <AnimatedElement animation="slide-up" delay={300}>
-            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
-              At FirstStep Pre School, we create a joyful environment where
-              curiosity thrives and every child's potential is celebrated.
+            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed mb-8 max-w-3xl mx-auto">
+              We provide a nurturing environment where children explore, learn,
+              and grow through play and guided activities.
             </p>
           </AnimatedElement>
 
           <AnimatedElement animation="slide-up" delay={400}>
-            <div className="flex flex-wrap gap-4 mb-8">
+            <div className="grid md:grid-cols-2 gap-6 mt-12">
+              <div className="bg-blue-50/90 backdrop-blur-sm rounded-lg p-6 flex items-start shadow-md">
+                <div className="rounded-full bg-blue-100 p-3 mr-4">
+                  <Shield className="h-6 w-6 text-blue-500" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-xl font-semibold text-blue-500 mb-2">Child Safety</h3>
+                  <p className="text-gray-600">Secure environment with trained staff and safety protocols.</p>
+                </div>
+              </div>
+              
+              <div className="bg-pink-50/90 backdrop-blur-sm rounded-lg p-6 flex items-start shadow-md">
+                <div className="rounded-full bg-pink-100 p-3 mr-4">
+                  <Heart className="h-6 w-6 text-pink-500" />
+                </div>
+                <div className="text-left">
+                  <h3 className="text-xl font-semibold text-pink-500 mb-2">Loving Care</h3>
+                  <p className="text-gray-600">Nurturing educators dedicated to your child's development and happiness.</p>
+                </div>
+              </div>
+            </div>
+          </AnimatedElement>
+
+          <AnimatedElement animation="slide-up" delay={500}>
+            <div className="flex justify-center gap-4 mt-10">
               <a
                 href="#contact"
-                className="px-6 py-3 rounded-full bg-primary text-white font-medium transition-all hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-1"
+                className="px-6 py-3 rounded-full bg-blue-500 text-white font-medium transition-all hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1"
               >
-                Enroll Now
+                Schedule a Visit
               </a>
               <a
-                href="#about"
-                className="px-6 py-3 rounded-full bg-white border border-primary/20 font-medium transition-all hover:border-primary"
+                href="tel:833-384-9661"
+                className="px-6 py-3 rounded-full bg-white border border-blue-500/30 font-medium transition-all hover:border-blue-500 flex items-center"
               >
-                Learn More
+                <svg className="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                </svg>
+                Call: 833-384-9661
               </a>
-            </div>
-          </AnimatedElement>
-          
-          {/* Children Images */}
-          <AnimatedElement animation="scale-in" delay={500}>
-            <div className="flex justify-start gap-3 overflow-hidden">
-              <div className="h-16 w-16 md:h-20 md:w-20 bg-white rounded-full border-2 border-primary/20 overflow-hidden shadow-md hover:scale-105 transition-transform">
-                <img
-                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=250&h=250&q=80"
-                  alt="Child learning with technology"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="h-16 w-16 md:h-20 md:w-20 bg-white rounded-full border-2 border-secondary/20 overflow-hidden shadow-md hover:scale-105 transition-transform">
-                <img
-                  src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=250&h=250&q=80"
-                  alt="Children in group activity"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="h-16 w-16 md:h-20 md:w-20 bg-white rounded-full border-2 border-accent/20 overflow-hidden shadow-md hover:scale-105 transition-transform">
-                <img
-                  src="https://images.unsplash.com/photo-1517022812141-3ac40a15d1ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=250&h=250&q=80"
-                  alt="Children playing outdoors"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-          </AnimatedElement>
-        </div>
-
-        <div className="order-1 lg:order-2 flex justify-center items-center">
-          <AnimatedElement animation="scale-in" delay={300} className="relative">
-            <div className="relative w-72 h-72 md:w-96 md:h-96">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full animate-float" />
-              <div className="absolute inset-4 bg-white rounded-full shadow-xl flex items-center justify-center">
-                <TreeDeciduous className="h-24 w-24 md:h-32 md:w-32 text-primary" />
-              </div>
-              <div className="absolute -top-4 -right-4 bg-accent/10 p-3 rounded-full shadow-lg animate-float" style={{ animationDelay: "1s" }}>
-                <span className="text-3xl">🎨</span>
-              </div>
-              <div className="absolute -bottom-4 -left-4 bg-secondary/10 p-3 rounded-full shadow-lg animate-float" style={{ animationDelay: "2s" }}>
-                <span className="text-3xl">📚</span>
-              </div>
-              <div className="absolute top-1/2 -right-8 bg-primary/10 p-3 rounded-full shadow-lg animate-float" style={{ animationDelay: "1.5s" }}>
-                <span className="text-3xl">🧩</span>
-              </div>
             </div>
           </AnimatedElement>
         </div>

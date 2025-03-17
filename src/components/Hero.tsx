@@ -13,7 +13,7 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
         <img
-          src="/lovable-uploads/7c7be02d-904d-4b1d-ba75-0694a4f68af7.png"
+          src="/placeholder.svg"
           alt="Happy children playing"
           className="w-full h-full object-cover"
         />

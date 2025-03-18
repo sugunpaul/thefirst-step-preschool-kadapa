@@ -1,7 +1,8 @@
 
 import React from "react";
 import AnimatedElement from "./AnimatedElement";
-import { Sparkles, Heart, Brain, Users } from "lucide-react";
+import { Sparkles, Heart, Brain, Users, X } from "lucide-react";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 
 const Classroom = () => {
   const features = [
@@ -10,24 +11,28 @@ const Classroom = () => {
       title: "Creative Expression",
       description:
         "Art, music, and dramatic play that nurtures imagination and self-expression.",
+      detailedInfo: "Our creative expression program encourages children to explore different art forms, music styles, and dramatic play scenarios. Through these activities, children develop fine motor skills, build confidence in expressing themselves, and learn to appreciate various forms of artistic expression. Activities include finger painting, puppet shows, musical instrument exploration, and imaginative play in our themed corners."
     },
     {
       icon: <Brain className="h-6 w-6" />,
       title: "Cognitive Development",
       description:
         "Age-appropriate activities that build problem-solving and critical thinking skills.",
+      detailedInfo: "Our cognitive development curriculum is designed to stimulate children's natural curiosity and thinking abilities. Through purposeful play, guided exploration, and hands-on activities, children develop essential problem-solving skills, logical reasoning, and memory capabilities. We incorporate puzzles, sorting games, pattern recognition activities, and early mathematics concepts in fun, engaging ways that make learning a joy."
     },
     {
       icon: <Heart className="h-6 w-6" />,
       title: "Emotional Growth",
       description:
         "Supporting children to understand and express their feelings in healthy ways.",
+      detailedInfo: "Emotional intelligence is a cornerstone of our program. We help children identify and name their feelings, develop self-regulation skills, and build empathy for others. Through storytelling, role-playing, and guided discussions, children learn to navigate their emotions in constructive ways. Our teachers provide a safe, supportive environment where all feelings are acknowledged and children develop positive self-esteem and resilience."
     },
     {
       icon: <Users className="h-6 w-6" />,
       title: "Social Skills",
       description:
         "Learning to share, collaborate, and build meaningful friendships.",
+      detailedInfo: "Strong social skills form the foundation for lifelong relationships and success. Our curriculum encourages collaboration, sharing, turn-taking, and conflict resolution through guided group activities and supervised play. Children learn to communicate effectively, respect differences, and develop genuine friendships. We facilitate positive peer interactions while teaching important social boundaries and cooperation skills that will serve them throughout life."
     },
   ];
 
@@ -56,15 +61,37 @@ const Classroom = () => {
                 animation="slide-up"
                 delay={index * 100}
               >
-                <div className="glass-card rounded-xl p-6 h-full hover:shadow-lg transition-all">
-                  <div className="bg-primary/10 p-3 rounded-lg inline-block mb-4">
-                    {React.cloneElement(feature.icon, {
-                      className: "h-6 w-6 text-primary",
-                    })}
-                  </div>
-                  <h3 className="font-semibold text-xl mb-3">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
-                </div>
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <div className="glass-card rounded-xl p-6 h-full hover:shadow-lg transition-all cursor-pointer">
+                      <div className="bg-primary/10 p-3 rounded-lg inline-block mb-4">
+                        {React.cloneElement(feature.icon, {
+                          className: "h-6 w-6 text-primary",
+                        })}
+                      </div>
+                      <h3 className="font-semibold text-xl mb-3">{feature.title}</h3>
+                      <p className="text-muted-foreground">{feature.description}</p>
+                    </div>
+                  </SheetTrigger>
+                  <SheetContent className="sm:max-w-[50%]">
+                    <SheetHeader>
+                      <SheetTitle className="flex items-center gap-2 text-2xl">
+                        {React.cloneElement(feature.icon, {
+                          className: "h-6 w-6 text-primary",
+                        })}
+                        {feature.title}
+                      </SheetTitle>
+                      <SheetDescription className="text-base text-foreground">
+                        {feature.description}
+                      </SheetDescription>
+                    </SheetHeader>
+                    <div className="mt-6 space-y-4">
+                      <p className="text-muted-foreground leading-relaxed">
+                        {feature.detailedInfo}
+                      </p>
+                    </div>
+                  </SheetContent>
+                </Sheet>
               </AnimatedElement>
             ))}
           </div>

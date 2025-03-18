@@ -12,9 +12,13 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
         <img
-          src="https://images.unsplash.com/photo-1576404650857-f6d1dd859de1?auto=format&fit=crop&w=1400&q=80"
+          src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80"
           alt="Happy school children in uniform walking together"
           className="w-full h-full object-cover"
+          onError={(e) => {
+            console.error("Image failed to load");
+            e.currentTarget.src = "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1400&q=80";
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white" />
       </div>

@@ -28,7 +28,7 @@ const ActivityModal = ({ activity, isOpen, onClose }: ActivityModalProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-2xl">
+      <DialogContent className="sm:max-w-[50%] w-[95%] max-h-[80vh] overflow-y-auto animate-scale-in">
         <DialogHeader>
           <DialogTitle className="text-2xl font-serif flex items-center gap-3">
             <span className="inline-block p-2 rounded-full bg-white shadow-sm">

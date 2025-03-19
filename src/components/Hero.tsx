@@ -3,6 +3,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import { Shield, Heart, Book, Calendar, CheckCircle } from "lucide-react";
 import AnimatedElement from "./AnimatedElement";
+import { AspectRatio } from "./ui/aspect-ratio";
 
 const Hero = () => {
   return (
@@ -10,77 +11,63 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden pt-16"
     >
-      {/* Background Images with Overlay */}
+      {/* Background With Illustration */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1400&q=80"
-            alt="Happy school children in uniform walking together"
-            className="w-full h-full object-cover"
+            src="https://images.unsplash.com/photo-1576404425487-3c0ba7da0fdf?auto=format&fit=crop&w=1400&q=80"
+            alt="Colorful preschool classroom with children engaged in activities"
+            className="w-full h-full object-cover opacity-20"
             onError={(e) => {
               console.error("Image failed to load");
-              e.currentTarget.src = "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1400&q=80";
-            }}
-          />
-        </div>
-        <div className="absolute inset-0 overflow-hidden opacity-40">
-          <img
-            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80"
-            alt="Colorful classroom environment"
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              console.error("Second background image failed to load");
-              e.currentTarget.src = "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1576404425487-3c0ba7da0fdf?auto=format&fit=crop&w=1400&q=80";
             }}
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white" />
       </div>
       
-      {/* Floating images of children */}
-      <div className="absolute left-[5%] top-[25%] animate-float" style={{ animationDelay: "0s" }}>
-        <img 
-          src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=250&h=250&auto=format&fit=crop&q=80" 
-          alt="Happy child" 
-          className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-4 border-white shadow-lg"
-          onError={(e) => {
-            console.error("Child image 1 failed to load");
-            e.currentTarget.src = "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=250&h=250&auto=format&fit=crop&q=80";
-          }}
-        />
+      {/* Main Illustration */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/4 w-full max-w-4xl px-4 md:px-0 z-5">
+        <AspectRatio ratio={16/9} className="rounded-2xl overflow-hidden shadow-2xl">
+          <img 
+            src="https://images.unsplash.com/photo-1526634332515-d56c5fd16991?auto=format&fit=crop&w=1400&q=80" 
+            alt="Vibrant preschool with diverse children enjoying learning activities" 
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              console.error("Preschool illustration failed to load");
+              e.currentTarget.src = "https://images.unsplash.com/photo-1526634332515-d56c5fd16991?auto=format&fit=crop&w=1400&q=80";
+            }} 
+          />
+        </AspectRatio>
+      </div>
+      
+      {/* Decorative Elements */}
+      <div className="absolute top-20 left-[10%] h-64 w-64 rounded-full bg-blue-100/30 -z-5 animate-pulse" style={{ animationDuration: "6s" }} />
+      <div className="absolute top-40 right-[5%] h-96 w-96 rounded-full bg-pink-100/30 -z-5 animate-pulse" style={{ animationDuration: "8s" }} />
+      <div className="absolute bottom-10 left-[20%] h-40 w-40 rounded-full bg-yellow-100/30 -z-5 animate-pulse" style={{ animationDuration: "7s" }} />
+      
+      {/* Animated Decorative Icons */}
+      <div className="absolute left-[5%] top-[15%] animate-float" style={{ animationDelay: "0s" }}>
+        <div className="bg-blue-100 p-3 rounded-full shadow-lg">
+          <Book className="h-6 w-6 text-blue-500" />
+        </div>
       </div>
       
       <div className="absolute right-[10%] top-[20%] animate-float" style={{ animationDelay: "1.5s" }}>
-        <img 
-          src="https://images.unsplash.com/photo-1554474051-0256b98c36f8?w=250&h=250&auto=format&fit=crop&q=80" 
-          alt="Joyful child" 
-          className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-4 border-white shadow-lg"
-          onError={(e) => {
-            console.error("Child image 2 failed to load");
-            e.currentTarget.src = "https://images.unsplash.com/photo-1554474051-0256b98c36f8?w=250&h=250&auto=format&fit=crop&q=80";
-          }}
-        />
+        <div className="bg-pink-100 p-3 rounded-full shadow-lg">
+          <Heart className="h-6 w-6 text-pink-500" />
+        </div>
       </div>
       
-      <div className="absolute left-[20%] bottom-[25%] animate-float" style={{ animationDelay: "0.7s" }}>
-        <img 
-          src="https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?w=250&h=250&auto=format&fit=crop&q=80" 
-          alt="Smiling child" 
-          className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-4 border-white shadow-lg"
-          onError={(e) => {
-            console.error("Child image 3 failed to load");
-            e.currentTarget.src = "https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?w=250&h=250&auto=format&fit=crop&q=80";
-          }}
-        />
+      <div className="absolute left-[15%] bottom-[15%] animate-float" style={{ animationDelay: "0.7s" }}>
+        <div className="bg-yellow-100 p-3 rounded-full shadow-lg">
+          <Shield className="h-6 w-6 text-yellow-500" />
+        </div>
       </div>
-      
-      {/* Decorative circles */}
-      <div className="absolute top-20 left-[10%] h-64 w-64 rounded-full bg-primary/5 -z-5 animate-pulse" style={{ animationDuration: "6s" }} />
-      <div className="absolute top-40 right-[5%] h-96 w-96 rounded-full bg-secondary/5 -z-5 animate-pulse" style={{ animationDuration: "8s" }} />
-      <div className="absolute bottom-10 left-[20%] h-40 w-40 rounded-full bg-accent/5 -z-5 animate-pulse" style={{ animationDuration: "7s" }} />
 
       <div className="section-container grid grid-cols-1 lg:grid-cols-1 gap-12 items-center">
-        <div className="z-10 text-center mx-auto max-w-4xl">
+        <div className="z-10 text-center mx-auto max-w-4xl mt-16 md:mt-24 pt-32 md:pt-40">
           <AnimatedElement animation="scale-in" delay={100}>
             <div className="inline-flex items-center rounded-full bg-blue-100/80 backdrop-blur-sm px-4 py-1.5 text-sm font-medium text-primary mb-6 shadow-sm">
               <span className="mr-1">✨</span> Welcome to FirstStep Pre School

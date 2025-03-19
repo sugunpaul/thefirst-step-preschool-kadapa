@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import AnimatedElement from "./AnimatedElement";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, CheckCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const testimonials = [
@@ -160,6 +160,80 @@ const Testimonials = () => {
             <ChevronRight className="h-5 w-5" />
           </button>
         </div>
+
+        {/* Trusted by Families Section */}
+        <AnimatedElement animation="slide-up" delay={200}>
+          <div className="max-w-5xl mx-auto mt-20 px-4">
+            <div className="text-center mb-10">
+              <h3 className="font-serif text-2xl md:text-3xl font-bold mb-4">Trusted by Families Across the Community</h3>
+              <p className="text-muted-foreground">Join the hundreds of families who trust FirstStep with their children's early education</p>
+            </div>
+
+            <div className="flex justify-center mb-8">
+              <div className="flex items-center space-x-2">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <svg 
+                    key={star}
+                    className="w-6 h-6 text-yellow-400" 
+                    fill="currentColor" 
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+                <span className="text-lg font-medium ml-2">
+                  5.0 (200+ reviews)
+                </span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-all">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-blue-500 mb-2">15+</div>
+                  <div className="text-sm text-gray-600">Years of Experience</div>
+                </div>
+              </div>
+              <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-all">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-purple-500 mb-2">500+</div>
+                  <div className="text-sm text-gray-600">Children Educated</div>
+                </div>
+              </div>
+              <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-all">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-green-500 mb-2">100%</div>
+                  <div className="text-sm text-gray-600">Licensed Staff</div>
+                </div>
+              </div>
+              <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-all">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-pink-500 mb-2">98%</div>
+                  <div className="text-sm text-gray-600">Parent Satisfaction</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-4 mt-10">
+              <div className="flex items-center bg-green-50 rounded-full px-4 py-2">
+                <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                <span className="text-sm font-medium">Licensed Facility</span>
+              </div>
+              <div className="flex items-center bg-blue-50 rounded-full px-4 py-2">
+                <CheckCircle className="h-5 w-5 text-blue-500 mr-2" />
+                <span className="text-sm font-medium">Certified Teachers</span>
+              </div>
+              <div className="flex items-center bg-purple-50 rounded-full px-4 py-2">
+                <CheckCircle className="h-5 w-5 text-purple-500 mr-2" />
+                <span className="text-sm font-medium">Health & Safety Compliant</span>
+              </div>
+              <div className="flex items-center bg-pink-50 rounded-full px-4 py-2">
+                <CheckCircle className="h-5 w-5 text-pink-500 mr-2" />
+                <span className="text-sm font-medium">Enrichment Programs</span>
+              </div>
+            </div>
+          </div>
+        </AnimatedElement>
       </div>
     </section>
   );

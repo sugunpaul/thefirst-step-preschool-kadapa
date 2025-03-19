@@ -10,17 +10,30 @@ const Hero = () => {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden pt-16"
     >
-      {/* Background Image */}
+      {/* Background Images with Overlay */}
       <div className="absolute inset-0 -z-10">
-        <img
-          src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1400&q=80"
-          alt="Happy school children in uniform walking together"
-          className="w-full h-full object-cover"
-          onError={(e) => {
-            console.error("Image failed to load");
-            e.currentTarget.src = "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1400&q=80";
-          }}
-        />
+        <div className="absolute inset-0 overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1400&q=80"
+            alt="Happy school children in uniform walking together"
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              console.error("Image failed to load");
+              e.currentTarget.src = "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1400&q=80";
+            }}
+          />
+        </div>
+        <div className="absolute inset-0 overflow-hidden opacity-40">
+          <img
+            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80"
+            alt="Colorful classroom environment"
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              console.error("Second background image failed to load");
+              e.currentTarget.src = "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80";
+            }}
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white" />
       </div>
       
@@ -88,44 +101,6 @@ const Hero = () => {
               We provide a nurturing environment where children explore, learn,
               and grow through play and guided activities.
             </p>
-          </AnimatedElement>
-
-          {/* Trusted by families section */}
-          <AnimatedElement animation="slide-up" delay={350}>
-            <div className="flex flex-col items-center mt-4 mb-8">
-              <div className="text-sm font-medium text-muted-foreground mb-3">
-                Trusted by families across the community
-              </div>
-              <div className="flex items-center justify-center space-x-2 md:space-x-4">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <svg 
-                    key={star}
-                    className="w-5 h-5 text-yellow-400" 
-                    fill="currentColor" 
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-                <span className="text-sm font-medium text-muted-foreground ml-1">
-                  5.0 (200+ reviews)
-                </span>
-              </div>
-              <div className="flex flex-wrap justify-center gap-4 mt-4">
-                <div className="flex items-center bg-green-50 rounded-full px-3 py-1">
-                  <CheckCircle className="h-4 w-4 text-green-500 mr-1" />
-                  <span className="text-xs font-medium">Licensed Facility</span>
-                </div>
-                <div className="flex items-center bg-blue-50 rounded-full px-3 py-1">
-                  <CheckCircle className="h-4 w-4 text-blue-500 mr-1" />
-                  <span className="text-xs font-medium">Certified Teachers</span>
-                </div>
-                <div className="flex items-center bg-purple-50 rounded-full px-3 py-1">
-                  <CheckCircle className="h-4 w-4 text-purple-500 mr-1" />
-                  <span className="text-xs font-medium">Health & Safety Compliant</span>
-                </div>
-              </div>
-            </div>
           </AnimatedElement>
 
           <AnimatedElement animation="slide-up" delay={400}>

@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, TreeDeciduous, Phone } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -42,15 +42,11 @@ const Header = () => {
             href="#home"
             className="flex items-center space-x-2 text-primary no-select"
           >
-            <TreeDeciduous className="h-8 w-8" />
-            <div className="flex flex-col">
-              <span className="font-serif font-bold text-xl leading-none tracking-tight">
-                FirstStep
-              </span>
-              <span className="text-sm font-medium leading-none tracking-wide">
-                Pre School
-              </span>
-            </div>
+            <img 
+              src="/lovable-uploads/48c6ce5d-318b-4c88-b0a8-bc00b1cbe7ac.png" 
+              alt="FirstStep PreSchool Logo" 
+              className="h-12 md:h-14"
+            />
           </a>
 
           {/* Contact Number */}

@@ -6,8 +6,15 @@ import AnimatedElement from "./AnimatedElement";
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-16">
-      <div className="section-container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section id="home" className="relative min-h-screen flex items-center pt-16 bg-gradient-to-b from-blue-50 to-pink-50">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-blue-100/50 animate-float" style={{ animationDelay: "0s" }}></div>
+        <div className="absolute bottom-20 right-10 w-56 h-56 rounded-full bg-pink-100/50 animate-float" style={{ animationDelay: "2s" }}></div>
+        <div className="absolute top-1/3 right-1/4 w-40 h-40 rounded-full bg-yellow-100/50 animate-float" style={{ animationDelay: "4s" }}></div>
+      </div>
+
+      <div className="section-container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
         {/* Left Content */}
         <div>
           <AnimatedElement animation="scale-in" delay={100}>
@@ -19,9 +26,9 @@ const Hero = () => {
           <AnimatedElement animation="slide-up" delay={200}>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               Where Learning{" "}
-              <span className="text-blue-600">Begins</span>{" "}
+              <span className="text-blue-600 animate-bouncy inline-block" style={{ animationDelay: "0.2s" }}>Begins</span>{" "}
               <br />With{" "}
-              <span className="text-pink-500">Love</span>
+              <span className="text-pink-500 animate-bouncy inline-block" style={{ animationDelay: "0.4s" }}>Love</span>
             </h1>
           </AnimatedElement>
 
@@ -34,19 +41,19 @@ const Hero = () => {
 
           <AnimatedElement animation="slide-up" delay={400}>
             <div className="flex flex-wrap gap-4 mb-10">
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 transition-all hover:scale-105 duration-300">
                 <div className="rounded-full bg-blue-100 p-1">
                   <CheckCircle className="h-4 w-4 text-blue-600" />
                 </div>
                 <span className="text-muted-foreground">Ages 2-5</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 transition-all hover:scale-105 duration-300">
                 <div className="rounded-full bg-blue-100 p-1">
                   <CheckCircle className="h-4 w-4 text-blue-600" />
                 </div>
                 <span className="text-muted-foreground">Small Classes</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 transition-all hover:scale-105 duration-300">
                 <div className="rounded-full bg-blue-100 p-1">
                   <CheckCircle className="h-4 w-4 text-blue-600" />
                 </div>
@@ -79,25 +86,25 @@ const Hero = () => {
         {/* Right Content - Hero Image */}
         <div className="hidden lg:block">
           <AnimatedElement animation="scale-in" delay={200} className="relative">
-            <div className="absolute -top-10 -left-10 w-24 h-24 bg-blue-100 rounded-full opacity-70" />
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-pink-100 rounded-full opacity-70" />
-            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="absolute -top-10 -left-10 w-24 h-24 bg-blue-100 rounded-full opacity-70 animate-float" style={{ animationDelay: "1.5s" }} />
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-pink-100 rounded-full opacity-70 animate-float" style={{ animationDelay: "3s" }} />
+            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl transform transition-transform hover:scale-[1.02] duration-700">
               <img
                 src="https://images.unsplash.com/photo-1526634332515-d56c5fd16991?auto=format&fit=crop&w=1400&q=80"
                 alt="Preschool children engaged in learning activities"
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute top-1/2 right-0 transform translate-x-1/4 -translate-y-1/2">
-              <div className="bg-white rounded-full p-4 shadow-lg flex items-center justify-center">
+            <AnimatedElement animation="fade-in" delay={600} className="absolute top-1/2 right-0 transform translate-x-1/4 -translate-y-1/2">
+              <div className="bg-white rounded-full p-4 shadow-lg flex items-center justify-center animate-float" style={{ animationDelay: "2s" }}>
                 <Calendar className="h-8 w-8 text-blue-500" />
               </div>
-            </div>
-            <div className="absolute bottom-0 left-0 transform -translate-x-1/4 translate-y-1/4">
-              <div className="bg-white rounded-full p-4 shadow-lg flex items-center justify-center">
+            </AnimatedElement>
+            <AnimatedElement animation="fade-in" delay={800} className="absolute bottom-0 left-0 transform -translate-x-1/4 translate-y-1/4">
+              <div className="bg-white rounded-full p-4 shadow-lg flex items-center justify-center animate-float" style={{ animationDelay: "4s" }}>
                 <Book className="h-8 w-8 text-pink-500" />
               </div>
-            </div>
+            </AnimatedElement>
           </AnimatedElement>
         </div>
       </div>

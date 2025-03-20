@@ -43,9 +43,9 @@ const Header = () => {
             className="flex items-center space-x-2 text-primary no-select"
           >
             <img 
-              src="/lovable-uploads/48c6ce5d-318b-4c88-b0a8-bc00b1cbe7ac.png" 
+              src="/lovable-uploads/453777d0-2637-4795-9bb2-b0c697a62606.png" 
               alt="FirstStep PreSchool Logo" 
-              className="h-12 md:h-14"
+              className="h-14 md:h-16"
             />
           </a>
 

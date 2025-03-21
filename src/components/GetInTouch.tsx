@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Mail, Phone, Clock, Calendar, Send } from "lucide-react";
 import { Button } from "./ui/button";
@@ -16,23 +15,120 @@ import {
 import AnimatedElement from "./AnimatedElement";
 import { format } from "date-fns";
 import { Calendar as CalendarComponent } from "./ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "./ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { cn } from "@/lib/utils";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  selected_class: string;
+}
 const GetInTouch = () => {
+  const { toast } = useToast();
+
   const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [date, setDate] = useState<Date | undefined>(undefined);
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const [selectedClass, setSelectedClass] = useState("");
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    selected_class: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({
+    type: null,
+    message: "",
+  });
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log({ name, email, date, message });
+    setIsSubmitting(true);
+    setFormStatus({ type: null, message: "" });
+
+    // Validate form
+    if (!formData.name || !formData.email || !formData.message) {
+      setFormStatus({
+        type: "error",
+        message: "Please fill out all required fields",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Submit to Supabase
+      const { error } = await supabase.from("contact_submissions").insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        },
+      ]);
+
+      if (error) throw error;
+
+      // Success
+      setFormStatus({
+        type: "success",
+        message: "Thank you! We'll be in touch soon.",
+      });
+
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you as soon as possible.",
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        selected_class: "",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormStatus({
+        type: "error",
+        message: "Something went wrong. Please try again later.",
+      });
+
+      toast({
+        title: "Submission Failed",
+        description: "There was a problem sending your message.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCall = () => {
@@ -44,7 +140,10 @@ const GetInTouch = () => {
   };
 
   return (
-    <section id="get-in-touch" className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+    <section
+      id="get-in-touch"
+      className="py-20 bg-gradient-to-br from-blue-50 to-purple-50"
+    >
       <div className="section-container">
         <AnimatedElement animation="slide-up">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -72,14 +171,16 @@ const GetInTouch = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-medium text-primary">(949) 386-6446</p>
+                <p className="text-lg font-medium text-primary">
+                  (949) 386-6446
+                </p>
                 <p className="text-sm text-muted-foreground mt-2">
                   Our friendly staff is ready to assist you
                 </p>
               </CardContent>
               <CardFooter>
-                <Button 
-                  onClick={handleCall} 
+                <Button
+                  onClick={handleCall}
                   className="w-full"
                   variant="outline"
                 >
@@ -103,14 +204,16 @@ const GetInTouch = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-medium text-primary">info@firststeppreschool.com</p>
+                <p className="text-lg font-medium text-primary">
+                  info@firststeppreschool.com
+                </p>
                 <p className="text-sm text-muted-foreground mt-2">
                   We'll respond within 24 hours
                 </p>
               </CardContent>
               <CardFooter>
-                <Button 
-                  onClick={handleEmail} 
+                <Button
+                  onClick={handleEmail}
                   className="w-full"
                   variant="outline"
                 >
@@ -135,15 +238,19 @@ const GetInTouch = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-sm font-medium">Monday - Friday:</p>
-                <p className="text-lg font-medium text-primary">7:00 AM - 6:00 PM</p>
+                <p className="text-lg font-medium text-primary">
+                  7:00 AM - 6:00 PM
+                </p>
                 <p className="text-sm font-medium mt-2">Saturday - Sunday:</p>
                 <p className="text-primary">Closed</p>
               </CardContent>
               <CardFooter>
-                <Button 
+                <Button
                   className="w-full"
                   variant="outline"
-                  onClick={() => window.open("https://calendar.google.com", "_blank")}
+                  onClick={() =>
+                    window.open("https://calendar.google.com", "_blank")
+                  }
                 >
                   <Calendar className="h-4 w-4 mr-2" />
                   View Calendar
@@ -159,78 +266,83 @@ const GetInTouch = () => {
             <Card className="bg-white/80 backdrop-blur-sm shadow-sm">
               <CardHeader>
                 <CardTitle className="text-2xl">Schedule a Visit</CardTitle>
-                <CardDescription>Fill out the form below to schedule a tour</CardDescription>
+                <CardDescription>
+                  Fill out the form below to schedule a tour
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-4">
                     <div>
                       <Label htmlFor="name">Full Name</Label>
-                      <Input 
-                        id="name" 
-                        placeholder="John Smith" 
-                        value={name} 
-                        onChange={(e) => setName(e.target.value)} 
+                      <Input
+                        id="name"
+                        placeholder="John Smith"
+                        value={formData.name}
+                        onChange={handleInputChange}
                         className="mt-1"
                         required
                       />
                     </div>
-                    
+
                     <div>
                       <Label htmlFor="email">Email Address</Label>
-                      <Input 
-                        id="email" 
-                        type="email" 
-                        placeholder="john@example.com" 
-                        value={email} 
-                        onChange={(e) => setEmail(e.target.value)} 
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="john@example.com"
+                        value={formData.email}
+                        onChange={handleInputChange}
                         className="mt-1"
                         required
                       />
                     </div>
-                    
                     <div>
-                      <Label htmlFor="date">Preferred Visit Date</Label>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button
-                            variant="outline"
-                            className={cn(
-                              "w-full justify-start text-left font-normal mt-1",
-                              !date && "text-muted-foreground"
-                            )}
-                            id="date"
-                          >
-                            <Calendar className="mr-2 h-4 w-4" />
-                            {date ? format(date, "PPP") : <span>Pick a date</span>}
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <CalendarComponent
-                            mode="single"
-                            selected={date}
-                            onSelect={setDate}
-                            initialFocus
-                            className="p-3 pointer-events-auto"
-                          />
-                        </PopoverContent>
-                      </Popover>
+                      <Label
+                        htmlFor="phone"
+                        className="block text-sm font-medium mb-2"
+                      >
+                        Phone Number
+                      </Label>
+                      <Input
+                        type="tel"
+                        id="phone"
+                        className="w-full"
+                        placeholder="(123) 456-7890"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                      />
                     </div>
-                    
+                    <div>
+                      <Label htmlFor="class">Select Class</Label>
+                      <Select onValueChange={setSelectedClass}>
+                        <SelectTrigger id="class" className="w-full mt-1">
+                          <SelectValue placeholder="Select a class" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="Sr KG">Sr KG</SelectItem>
+                          <SelectItem value="Jr KG">Jr KG</SelectItem>
+                          <SelectItem value="Pre KG">Pre KG</SelectItem>
+                          <SelectItem value="Pre KG">Play School</SelectItem>
+                          <SelectItem value="Pre KG">Day Care</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
                     <div>
                       <Label htmlFor="message">Message</Label>
-                      <Textarea 
-                        id="message" 
-                        placeholder="I'm interested in touring the facility..." 
-                        value={message} 
-                        onChange={(e) => setMessage(e.target.value)} 
+                      <Textarea
+                        id="message"
+                        placeholder="I'm interested in touring the facility..."
+                        value={formData.message}
+                        onChange={handleInputChange}
                         className="mt-1"
                         rows={4}
                         required
                       />
                     </div>
                   </div>
-                  
+
                   <Button type="submit" className="w-full" size="lg">
                     <Send className="mr-2 h-4 w-4" />
                     Send Request
@@ -248,10 +360,10 @@ const GetInTouch = () => {
                 <CardDescription>The First Step School</CardDescription>
               </CardHeader>
               <CardContent className="p-0 aspect-video">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3321.4260100960224!2d-117.7398848!3d33.6464145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dce7df1745b6f9%3A0xf7a0f511ae0aa750!2s21420%20Magnolia%20St%2C%20Huntington%20Beach%2C%20CA%2092646%2C%20USA!5e0!3m2!1sen!2sus!4v1708901234567!5m2!1sen!2sus" 
-                  width="100%" 
-                  height="100%" 
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30906.712776639375!2d78.7829842!3d14.4652076!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb3730018e798df%3A0xb7493958c3663687!2sThe%20First%20Step%20Preschool!5e0!3m2!1sen!2sin!4v1742538166360!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
                   style={{ border: 0 }}
                   allowFullScreen={true}
                   loading="lazy"
@@ -261,10 +373,15 @@ const GetInTouch = () => {
                 ></iframe>
               </CardContent>
               <CardFooter className="bg-muted/20">
-                <Button 
-                  variant="outline" 
-                  className="w-full"
-                  onClick={() => window.open("https://maps.app.goo.gl/TZNRv6qmf5AJwKaE7", "_blank")}
+                <Button
+                  variant="outline"
+                  className="w-full mt-4"
+                  onClick={() =>
+                    window.open(
+                      "https://maps.app.goo.gl/TZNRv6qmf5AJwKaE7",
+                      "_blank"
+                    )
+                  }
                 >
                   Get Directions
                 </Button>

@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -13,7 +12,7 @@ const Index = () => {
   useEffect(() => {
     // Update the title for SEO
     document.title = "FirstStep Pre School - Nurturing Young Minds";
-    
+
     // Add meta description for SEO
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
@@ -33,7 +32,7 @@ const Index = () => {
         <Classroom />
         <Testimonials />
         <GetInTouch />
-        <Contact />
+        {/* <Contact /> */}
       </main>
       <Footer />
     </div>

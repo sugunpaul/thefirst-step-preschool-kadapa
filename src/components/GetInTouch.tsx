@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Mail, Phone, Clock, Calendar, Send } from "lucide-react";
+import { Mail, Phone, Clock, Calendar, Send, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
+import { Map } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -26,7 +27,11 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 interface FormData {
   name: string;
   email: string;
@@ -37,12 +42,7 @@ interface FormData {
 const GetInTouch = () => {
   const { toast } = useToast();
 
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
   const [date, setDate] = useState<Date | undefined>(undefined);
-  const [selectedClass, setSelectedClass] = useState("");
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -90,6 +90,7 @@ const GetInTouch = () => {
           email: formData.email,
           phone: formData.phone,
           message: formData.message,
+          selected_class: formData.selected_class,
         },
       ]);
 
@@ -136,7 +137,7 @@ const GetInTouch = () => {
   };
 
   const handleEmail = () => {
-    window.location.href = "mailto:info@firststeppreschool.com";
+    window.location.href = "mailto:thefirststeppreschoolkdp@gmail.com";
   };
 
   return (
@@ -157,7 +158,7 @@ const GetInTouch = () => {
           </div>
         </AnimatedElement>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
           {/* Contact Card 1: Call Us */}
           <AnimatedElement animation="slide-up" delay={100}>
             <Card className="h-full bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all">
@@ -171,14 +172,13 @@ const GetInTouch = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-medium text-primary">
-                  (949) 386-6446
-                </p>
+                <p className="text-lg font-medium text-primary">8125511911</p>
+                <p className="text-lg font-medium text-primary">7207001911</p>
                 <p className="text-sm text-muted-foreground mt-2">
                   Our friendly staff is ready to assist you
                 </p>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="w-full flex items-center justify-center">
                 <Button
                   onClick={handleCall}
                   className="w-full"
@@ -204,17 +204,24 @@ const GetInTouch = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-lg font-medium text-primary">
-                  info@firststeppreschool.com
-                </p>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <p className="text-lg font-medium text-primary overflow-hidden text-ellipsis whitespace-nowrap">
+                      thefirststeppreschoolkdp@gmail.com
+                    </p>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    thefirststeppreschoolkdp@gmail.com
+                  </TooltipContent>
+                </Tooltip>
                 <p className="text-sm text-muted-foreground mt-2">
                   We'll respond within 24 hours
                 </p>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="w-full flex items-center justify-center">
                 <Button
                   onClick={handleEmail}
-                  className="w-full"
+                  className="w-full mt-10 "
                   variant="outline"
                 >
                   <Mail className="h-4 w-4 mr-2" />
@@ -244,7 +251,7 @@ const GetInTouch = () => {
                 <p className="text-sm font-medium mt-2">Saturday - Sunday:</p>
                 <p className="text-primary">Closed</p>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="w-full flex items-center justify-center">
                 <Button
                   className="w-full"
                   variant="outline"
@@ -254,6 +261,63 @@ const GetInTouch = () => {
                 >
                   <Calendar className="h-4 w-4 mr-2" />
                   View Calendar
+                </Button>
+              </CardFooter>
+            </Card>
+          </AnimatedElement>
+
+          <AnimatedElement animation="slide-up" delay={400}>
+            <Card className="h-full bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all">
+              <CardHeader className="flex flex-row items-start space-x-4 pb-2">
+                <div className="bg-primary/10 p-3 rounded-lg">
+                  <MapPin className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <CardTitle className="text-xl">Branches</CardTitle>
+                  <CardDescription>Find us at these locations</CardDescription>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm font-medium">Main Branch:</p>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <p className="text-lg font-medium text-primary overflow-hidden text-ellipsis whitespace-nowrap">
+                      Road no:1, Balaji Nagar-2, ITI Circle, Dist, beside ITI
+                      Circle, Tilak Nagar, balaji bridge, Kadapa, Andhra Pradesh
+                      516003
+                    </p>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    Road no:1, Balaji Nagar-2, ITI Circle, Dist, beside ITI
+                    Circle, Tilak Nagar, balaji bridge, Kadapa, Andhra Pradesh
+                    516003
+                  </TooltipContent>
+                </Tooltip>
+                <p className="text-sm font-medium mt-2">Additional Branches:</p>
+                <ul className="list-disc list-inside text-primary">
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <li className="text-lg font-medium text-primary overflow-hidden text-ellipsis whitespace-nowrap">
+                        Reddy Colony, N.G.O Colony, Kadapa, Andhra Pradesh
+                        516003
+                      </li>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      Reddy Colony, N.G.O Colony, Kadapa, Andhra Pradesh 516003
+                    </TooltipContent>
+                  </Tooltip>
+                </ul>
+              </CardContent>
+              <CardFooter className="w-full flex items-center justify-center">
+                <Button
+                  className="w-full"
+                  variant="outline"
+                  onClick={() =>
+                    window.open("https://maps.google.com", "_blank")
+                  }
+                >
+                  <Map className="h-4 w-4 mr-2" />
+                  View on Map
                 </Button>
               </CardFooter>
             </Card>
@@ -315,7 +379,15 @@ const GetInTouch = () => {
                     </div>
                     <div>
                       <Label htmlFor="class">Select Class</Label>
-                      <Select onValueChange={setSelectedClass}>
+                      <Select
+                        value={formData.selected_class}
+                        onValueChange={(value) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            selected_class: value,
+                          }))
+                        }
+                      >
                         <SelectTrigger id="class" className="w-full mt-1">
                           <SelectValue placeholder="Select a class" />
                         </SelectTrigger>
@@ -323,8 +395,10 @@ const GetInTouch = () => {
                           <SelectItem value="Sr KG">Sr KG</SelectItem>
                           <SelectItem value="Jr KG">Jr KG</SelectItem>
                           <SelectItem value="Pre KG">Pre KG</SelectItem>
-                          <SelectItem value="Pre KG">Play School</SelectItem>
-                          <SelectItem value="Pre KG">Day Care</SelectItem>
+                          <SelectItem value="Play School">
+                            Play School
+                          </SelectItem>
+                          <SelectItem value="Day Care">Day Care</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -361,9 +435,9 @@ const GetInTouch = () => {
               </CardHeader>
               <CardContent className="p-0 aspect-video">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30906.712776639375!2d78.7829842!3d14.4652076!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb3730018e798df%3A0xb7493958c3663687!2sThe%20First%20Step%20Preschool!5e0!3m2!1sen!2sin!4v1742538166360!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d30906.389368700322!2d78.8433098!3d14.4675315!3m2!1i1024!2i768!4f13.1!2m1!1sthe%20first%20step%20school%20kadapa!5e0!3m2!1sen!2sin!4v1742559483477!5m2!1sen!2sin"
                   width="100%"
-                  height="100%"
+                  height="500px"
                   style={{ border: 0 }}
                   allowFullScreen={true}
                   loading="lazy"

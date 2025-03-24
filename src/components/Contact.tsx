@@ -1,4 +1,3 @@
-
 import React from "react";
 import AnimatedElement from "./AnimatedElement";
 import ContactInfo from "./contact/ContactInfo";
@@ -11,16 +10,16 @@ const Contact = () => {
   };
 
   const contactDetails = {
-    phoneNumber: "(949) 386-6446",
-    email: "info@firststeppreschool.com",
+    phoneNumber: "8125511911",
+    email: "thefirststeppreschoolkdp@gmail.com",
     address: {
       line1: "123 Learning Lane",
-      line2: "Irvine, CA 92618"
+      line2: "Irvine, CA 92618",
     },
     hours: {
       weekdays: "Monday - Friday: 7:00 AM - 6:00 PM",
-      weekends: "Saturday - Sunday: Closed"
-    }
+      weekends: "Saturday - Sunday: Closed",
+    },
   };
 
   return (
@@ -40,7 +39,7 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <AnimatedElement animation="slide-up" delay={100}>
-            <ContactInfo 
+            <ContactInfo
               phoneNumber={contactDetails.phoneNumber}
               email={contactDetails.email}
               address={contactDetails.address}

@@ -1,38 +1,54 @@
-
-import React from "react";
+import React, { useState } from "react";
 import AnimatedElement from "./AnimatedElement";
 import { Sparkles, Heart, Brain, Users, X } from "lucide-react";
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
-
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet";
+import * as SliderPrimitive from "@radix-ui/react-slider";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 const Classroom = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const features = [
     {
       icon: <Sparkles className="h-6 w-6" />,
       title: "Creative Expression",
       description:
         "Art, music, and dramatic play that nurtures imagination and self-expression.",
-      detailedInfo: "Our creative expression program encourages children to explore different art forms, music styles, and dramatic play scenarios. Through these activities, children develop fine motor skills, build confidence in expressing themselves, and learn to appreciate various forms of artistic expression. Activities include finger painting, puppet shows, musical instrument exploration, and imaginative play in our themed corners."
+      detailedInfo:
+        "Our creative expression program encourages children to explore different art forms, music styles, and dramatic play scenarios. Through these activities, children develop fine motor skills, build confidence in expressing themselves, and learn to appreciate various forms of artistic expression. Activities include finger painting, puppet shows, musical instrument exploration, and imaginative play in our themed corners.",
     },
     {
       icon: <Brain className="h-6 w-6" />,
       title: "Cognitive Development",
       description:
         "Age-appropriate activities that build problem-solving and critical thinking skills.",
-      detailedInfo: "Our cognitive development curriculum is designed to stimulate children's natural curiosity and thinking abilities. Through purposeful play, guided exploration, and hands-on activities, children develop essential problem-solving skills, logical reasoning, and memory capabilities. We incorporate puzzles, sorting games, pattern recognition activities, and early mathematics concepts in fun, engaging ways that make learning a joy."
+      detailedInfo:
+        "Our cognitive development curriculum is designed to stimulate children's natural curiosity and thinking abilities. Through purposeful play, guided exploration, and hands-on activities, children develop essential problem-solving skills, logical reasoning, and memory capabilities. We incorporate puzzles, sorting games, pattern recognition activities, and early mathematics concepts in fun, engaging ways that make learning a joy.",
     },
     {
       icon: <Heart className="h-6 w-6" />,
       title: "Emotional Growth",
       description:
         "Supporting children to understand and express their feelings in healthy ways.",
-      detailedInfo: "Emotional intelligence is a cornerstone of our program. We help children identify and name their feelings, develop self-regulation skills, and build empathy for others. Through storytelling, role-playing, and guided discussions, children learn to navigate their emotions in constructive ways. Our teachers provide a safe, supportive environment where all feelings are acknowledged and children develop positive self-esteem and resilience."
+      detailedInfo:
+        "Emotional intelligence is a cornerstone of our program. We help children identify and name their feelings, develop self-regulation skills, and build empathy for others. Through storytelling, role-playing, and guided discussions, children learn to navigate their emotions in constructive ways. Our teachers provide a safe, supportive environment where all feelings are acknowledged and children develop positive self-esteem and resilience.",
     },
     {
       icon: <Users className="h-6 w-6" />,
       title: "Social Skills",
       description:
         "Learning to share, collaborate, and build meaningful friendships.",
-      detailedInfo: "Strong social skills form the foundation for lifelong relationships and success. Our curriculum encourages collaboration, sharing, turn-taking, and conflict resolution through guided group activities and supervised play. Children learn to communicate effectively, respect differences, and develop genuine friendships. We facilitate positive peer interactions while teaching important social boundaries and cooperation skills that will serve them throughout life."
+      detailedInfo:
+        "Strong social skills form the foundation for lifelong relationships and success. Our curriculum encourages collaboration, sharing, turn-taking, and conflict resolution through guided group activities and supervised play. Children learn to communicate effectively, respect differences, and develop genuine friendships. We facilitate positive peer interactions while teaching important social boundaries and cooperation skills that will serve them throughout life.",
     },
   ];
 
@@ -69,8 +85,12 @@ const Classroom = () => {
                           className: "h-6 w-6 text-primary",
                         })}
                       </div>
-                      <h3 className="font-semibold text-xl mb-3">{feature.title}</h3>
-                      <p className="text-muted-foreground">{feature.description}</p>
+                      <h3 className="font-semibold text-xl mb-3">
+                        {feature.title}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {feature.description}
+                      </p>
                     </div>
                   </SheetTrigger>
                   <SheetContent className="sm:max-w-[50%]">
@@ -107,23 +127,76 @@ const Classroom = () => {
                 <span className="text-gradient">Learning Environment</span>
               </h2>
               <p className="text-muted-foreground text-lg">
-                Explore our thoughtfully designed classroom where children learn,
-                play, and grow together in a safe and stimulating space.
+                Explore our thoughtfully designed classroom where children
+                learn, play, and grow together in a safe and stimulating space.
               </p>
             </div>
           </AnimatedElement>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedElement animation="slide-up" delay={100}>
-              <div className="aspect-video rounded-2xl overflow-hidden shadow-xl">
-                <div className="h-full w-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="text-6xl mb-4">🧸 🎨 📚</div>
-                    <p className="text-lg font-medium">
-                      Classroom image will appear here
-                    </p>
-                  </div>
-                </div>
+              <div className="relative w-full max-w-2xl mx-auto">
+                {/* Swiper Container */}
+                <Swiper
+                  slidesPerView={1}
+                  pagination={{ clickable: true }}
+                  navigation={{
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                  }}
+                  autoplay={{ delay: 3000, disableOnInteraction: false }}
+                  speed={1200} // Smooth transition speed
+                  loop={true}
+                  modules={[Navigation, Pagination, Autoplay]}
+                  className="w-full h-80"
+                >
+                  {/* First Slide - Custom Div */}
+                  <SwiperSlide>
+                    <img
+                      src="/images/classRoom-1.jpeg"
+                      alt="Slide 1"
+                      className="w-full h-full object-cover"
+                    />
+                  </SwiperSlide>
+                  {/* Second Slide - Example Image */}
+                  <SwiperSlide>
+                    <img
+                      src="/images/classRoom-2.jpeg"
+                      alt="Slide 1"
+                      className="w-full h-full object-cover"
+                    />
+                  </SwiperSlide>
+                  {/* Third Slide - Example Image */}
+                  <SwiperSlide>
+                    <img
+                      src="/images/classRoom-3.jpeg"
+                      alt="Slide 2"
+                      className="w-full h-full object-cover"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src="/images/classRoom-4.jpg"
+                      alt="Slide 2"
+                      className="w-full h-full object-cover"
+                    />
+                  </SwiperSlide>{" "}
+                  <SwiperSlide>
+                    <img
+                      src="/images/classRoom-5.jpg"
+                      alt="Slide 2"
+                      className="w-full h-full object-cover"
+                    />
+                  </SwiperSlide>
+                </Swiper>
+
+                {/* Custom Navigation Buttons */}
+                <button className="swiper-button-prev absolute top-1/2 -left-6 transform -translate-y-1/2 bg-black/50   rounded-full text-white hover:bg-black">
+                  <ChevronLeft size={20} />
+                </button>
+                <button className="swiper-button-next absolute top-1/2 -right-6 transform -translate-y-1/2 bg-black/50   rounded-full text-white hover:bg-black">
+                  <ChevronRight size={20} />
+                </button>
               </div>
             </AnimatedElement>
 

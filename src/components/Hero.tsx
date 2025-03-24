@@ -1,4 +1,3 @@
-
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Shield, Heart, Book, Calendar, CheckCircle } from "lucide-react";
@@ -6,12 +5,24 @@ import AnimatedElement from "./AnimatedElement";
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-16 bg-gradient-to-b from-blue-50 to-pink-50">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center pt-16 bg-gradient-to-b from-blue-50 to-pink-50"
+    >
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-blue-100/50 animate-float" style={{ animationDelay: "0s" }}></div>
-        <div className="absolute bottom-20 right-10 w-56 h-56 rounded-full bg-pink-100/50 animate-float" style={{ animationDelay: "2s" }}></div>
-        <div className="absolute top-1/3 right-1/4 w-40 h-40 rounded-full bg-yellow-100/50 animate-float" style={{ animationDelay: "4s" }}></div>
+        <div
+          className="absolute top-20 left-10 w-64 h-64 rounded-full bg-blue-100/50 animate-float"
+          style={{ animationDelay: "0s" }}
+        ></div>
+        <div
+          className="absolute bottom-20 right-10 w-56 h-56 rounded-full bg-pink-100/50 animate-float"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute top-1/3 right-1/4 w-40 h-40 rounded-full bg-yellow-100/50 animate-float"
+          style={{ animationDelay: "4s" }}
+        ></div>
       </div>
 
       <div className="section-container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
@@ -26,9 +37,20 @@ const Hero = () => {
           <AnimatedElement animation="slide-up" delay={200}>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               Where Learning{" "}
-              <span className="text-blue-600 animate-bouncy inline-block" style={{ animationDelay: "0.2s" }}>Begins</span>{" "}
-              <br />With{" "}
-              <span className="text-pink-500 animate-bouncy inline-block" style={{ animationDelay: "0.4s" }}>Love</span>
+              <span
+                className="text-blue-600 animate-bouncy inline-block"
+                style={{ animationDelay: "0.2s" }}
+              >
+                Begins
+              </span>{" "}
+              <br />
+              With{" "}
+              <span
+                className="text-pink-500 animate-bouncy inline-block"
+                style={{ animationDelay: "0.4s" }}
+              >
+                Love
+              </span>
             </h1>
           </AnimatedElement>
 
@@ -57,7 +79,9 @@ const Hero = () => {
                 <div className="rounded-full bg-blue-100 p-1">
                   <CheckCircle className="h-4 w-4 text-blue-600" />
                 </div>
-                <span className="text-muted-foreground">Certified Teachers</span>
+                <span className="text-muted-foreground">
+                  Certified Teachers
+                </span>
               </div>
             </div>
           </AnimatedElement>
@@ -74,10 +98,21 @@ const Hero = () => {
                 href="tel:9493866446"
                 className="px-6 py-3 rounded-full bg-white border border-blue-500/30 font-medium transition-all hover:border-blue-500 flex items-center justify-center sm:justify-start"
               >
-                <svg className="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                <svg
+                  className="w-5 h-5 mr-2 text-blue-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  ></path>
                 </svg>
-                Call: 949-386-6446
+                Call: 8125511911
               </a>
             </div>
           </AnimatedElement>
@@ -85,23 +120,47 @@ const Hero = () => {
 
         {/* Right Content - Hero Image */}
         <div className="hidden lg:block">
-          <AnimatedElement animation="scale-in" delay={200} className="relative">
-            <div className="absolute -top-10 -left-10 w-24 h-24 bg-blue-100 rounded-full opacity-70 animate-float" style={{ animationDelay: "1.5s" }} />
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-pink-100 rounded-full opacity-70 animate-float" style={{ animationDelay: "3s" }} />
+          <AnimatedElement
+            animation="scale-in"
+            delay={200}
+            className="relative"
+          >
+            <div
+              className="absolute -top-10 -left-10 w-24 h-24 bg-blue-100 rounded-full opacity-70 animate-float"
+              style={{ animationDelay: "1.5s" }}
+            />
+            <div
+              className="absolute -bottom-10 -right-10 w-32 h-32 bg-pink-100 rounded-full opacity-70 animate-float"
+              style={{ animationDelay: "3s" }}
+            />
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl transform transition-transform hover:scale-[1.02] duration-700">
               <img
-                src="https://images.unsplash.com/photo-1526634332515-d56c5fd16991?auto=format&fit=crop&w=1400&q=80"
+                src="/images/main.jpeg"
                 alt="Preschool children engaged in learning activities"
                 className="w-full h-full object-cover"
               />
             </div>
-            <AnimatedElement animation="fade-in" delay={600} className="absolute top-1/2 right-0 transform translate-x-1/4 -translate-y-1/2">
-              <div className="bg-white rounded-full p-4 shadow-lg flex items-center justify-center animate-float" style={{ animationDelay: "2s" }}>
+            <AnimatedElement
+              animation="fade-in"
+              delay={600}
+              className="absolute top-1/2 right-0 transform translate-x-1/4 -translate-y-1/2"
+            >
+              <div
+                className="bg-white rounded-full p-4 shadow-lg flex items-center justify-center animate-float"
+                style={{ animationDelay: "2s" }}
+              >
                 <Calendar className="h-8 w-8 text-blue-500" />
               </div>
             </AnimatedElement>
-            <AnimatedElement animation="fade-in" delay={800} className="absolute bottom-0 left-0 transform -translate-x-1/4 translate-y-1/4">
-              <div className="bg-white rounded-full p-4 shadow-lg flex items-center justify-center animate-float" style={{ animationDelay: "4s" }}>
+            <AnimatedElement
+              animation="fade-in"
+              delay={800}
+              className="absolute bottom-0 left-0 transform -translate-x-1/4 translate-y-1/4"
+            >
+              <div
+                className="bg-white rounded-full p-4 shadow-lg flex items-center justify-center animate-float"
+                style={{ animationDelay: "4s" }}
+              >
                 <Book className="h-8 w-8 text-pink-500" />
               </div>
             </AnimatedElement>

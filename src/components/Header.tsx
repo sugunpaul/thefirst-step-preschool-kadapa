@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -32,9 +31,7 @@ const Header = () => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4",
-        isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-sm"
-          : "bg-transparent"
+        isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,23 +40,23 @@ const Header = () => {
             href="#home"
             className="flex items-center space-x-2 text-primary no-select"
           >
-            <img 
-              src="/lovable-uploads/453777d0-2637-4795-9bb2-b0c697a62606.png" 
-              alt="FirstStep PreSchool Logo" 
+            <img
+              src="/lovable-uploads/453777d0-2637-4795-9bb2-b0c697a62606.png"
+              alt="FirstStep PreSchool Logo"
               className="h-14 md:h-16"
             />
           </a>
 
           {/* Contact Number */}
-          <a 
-            href="tel:9493866446" 
+          <a
+            href="tel:9493866446"
             className={cn(
               "flex items-center gap-1.5 text-sm font-medium",
               isMobile ? "ml-auto mr-4" : "hidden md:flex"
             )}
           >
             <Phone className="h-4 w-4 text-primary" />
-            <span className="hidden sm:inline">949-386-6446</span>
+            <span className="hidden sm:inline">8125511911</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -104,9 +101,12 @@ const Header = () => {
               {item.label}
             </a>
           ))}
-          <a href="tel:9493866446" className="flex items-center gap-2 font-medium text-lg">
+          <a
+            href="tel:9493866446"
+            className="flex items-center gap-2 font-medium text-lg"
+          >
             <Phone className="h-5 w-5 text-primary" />
-            <span>949-386-6446</span>
+            <span>8125511911</span>
           </a>
         </nav>
       </div>

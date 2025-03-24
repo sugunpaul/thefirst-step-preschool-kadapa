@@ -158,10 +158,10 @@ const GetInTouch = () => {
           </div>
         </AnimatedElement>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {/* Contact Card 1: Call Us */}
           <AnimatedElement animation="slide-up" delay={100}>
-            <Card className="h-full bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all">
+            <Card className="h-full bg-white/80    transform transition-transform duration-500 hover:scale-105 hover:shadow-xl">
               <CardHeader className="flex flex-row items-start space-x-4 pb-2">
                 <div className="bg-primary/10 p-3 rounded-lg">
                   <Phone className="h-6 w-6 text-primary" />
@@ -193,7 +193,7 @@ const GetInTouch = () => {
 
           {/* Contact Card 2: Email Us */}
           <AnimatedElement animation="slide-up" delay={200}>
-            <Card className="h-full bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all">
+            <Card className="h-full bg-white/80 transform transition-transform duration-500 hover:scale-105 hover:shadow-xl">
               <CardHeader className="flex flex-row items-start space-x-4 pb-2">
                 <div className="bg-primary/10 p-3 rounded-lg">
                   <Mail className="h-6 w-6 text-primary" />
@@ -230,10 +230,11 @@ const GetInTouch = () => {
               </CardFooter>
             </Card>
           </AnimatedElement>
-
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {/* Contact Card 3: Hours */}
           <AnimatedElement animation="slide-up" delay={300}>
-            <Card className="h-full bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all">
+            <Card className="h-full bg-white/80 transform transition-transform duration-500 hover:scale-105 hover:shadow-xl">
               <CardHeader className="flex flex-row items-start space-x-4 pb-2">
                 <div className="bg-primary/10 p-3 rounded-lg">
                   <Clock className="h-6 w-6 text-primary" />
@@ -267,7 +268,7 @@ const GetInTouch = () => {
           </AnimatedElement>
 
           <AnimatedElement animation="slide-up" delay={400}>
-            <Card className="h-full bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all">
+            <Card className="h-full bg-white/80 transform transition-transform duration-500 hover:scale-105 hover:shadow-xl">
               <CardHeader className="flex flex-row items-start space-x-4 pb-2">
                 <div className="bg-primary/10 p-3 rounded-lg">
                   <MapPin className="h-6 w-6 text-primary" />

@@ -249,8 +249,12 @@ const GetInTouch = () => {
                 <p className="text-lg font-medium text-primary">
                   7:00 AM - 6:00 PM
                 </p>
-                <p className="text-sm font-medium mt-2">Saturday - Sunday:</p>
-                <p className="text-primary">Closed</p>
+                <p className="text-sm font-medium mt-2">Saturday </p>
+                <p className="text-primary"> 7:00 AM - 2:00 PM</p>
+                <p className="text-sm font-medium mt-2">
+                  Second Saturday - sunday
+                </p>
+                <p className="text-lg font-medium text-primary">Holiday</p>
               </CardContent>
               <CardFooter className="w-full flex items-center justify-center">
                 <Button
@@ -282,7 +286,7 @@ const GetInTouch = () => {
                 <p className="text-sm font-medium">Main Branch:</p>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <p className="text-lg font-medium text-primary overflow-hidden text-ellipsis whitespace-nowrap">
+                    <p className="text-lg font-medium text-primary  ">
                       Road no:1, Balaji Nagar-2, ITI Circle, Dist, beside ITI
                       Circle, Tilak Nagar, balaji bridge, Kadapa, Andhra Pradesh
                       516003
@@ -298,7 +302,7 @@ const GetInTouch = () => {
                 <ul className="list-disc list-inside text-primary">
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <li className="text-lg font-medium text-primary overflow-hidden text-ellipsis whitespace-nowrap">
+                      <li className="text-lg font-medium text-primary  ">
                         Reddy Colony, N.G.O Colony, Kadapa, Andhra Pradesh
                         516003
                       </li>

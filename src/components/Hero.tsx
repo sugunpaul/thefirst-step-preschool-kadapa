@@ -67,7 +67,9 @@ const Hero = () => {
                 <div className="rounded-full bg-blue-100 p-1">
                   <CheckCircle className="h-4 w-4 text-blue-600" />
                 </div>
-                <span className="text-muted-foreground">Ages 2-5</span>
+                <span className="text-muted-foreground">
+                  Certified Teachers
+                </span>
               </div>
               <div className="flex items-center space-x-2 transition-all hover:scale-105 duration-300">
                 <div className="rounded-full bg-blue-100 p-1">
@@ -79,9 +81,8 @@ const Hero = () => {
                 <div className="rounded-full bg-blue-100 p-1">
                   <CheckCircle className="h-4 w-4 text-blue-600" />
                 </div>
-                <span className="text-muted-foreground">
-                  Certified Teachers
-                </span>
+
+                <span className="text-muted-foreground">Hygiene First</span>
               </div>
             </div>
           </AnimatedElement>

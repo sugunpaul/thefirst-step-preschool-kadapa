@@ -33,18 +33,22 @@ const Footer = () => {
           <div>
             <h4 className="font-medium text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {["Home", "About", "Classroom", "Testimonials", "Contact"].map(
-                (item) => (
-                  <li key={item}>
-                    <a
-                      href={`#${item.toLowerCase()}`}
-                      className="text-white hover:text-primary transition-colors text-sm"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              {[
+                "Home",
+                "About",
+                "Classroom",
+                "Testimonials",
+                "Get in Touch",
+              ].map((item) => (
+                <li key={item}>
+                  <a
+                    href={`#${item.toLowerCase()}`}
+                    className="text-white hover:text-black transition-colors text-sm"
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -52,16 +56,16 @@ const Footer = () => {
             <h4 className="font-medium text-lg mb-4">Programs</h4>
             <ul className="space-y-2">
               {[
-                "Toddler Program (2-3 years)",
-                "Preschool (3-4 years)",
-                "Pre-Kindergarten (4-5 years)",
-                "Summer Camp",
-                "Enrichment Activities",
+                "Daycare (0-2 years)",
+                "Preschool (2-3 years)",
+                "Pre-KG (4-5 years)",
+                "Junior KG (5-6 years)",
+                "Senior KG (6-7 years)",
               ].map((item) => (
                 <li key={item}>
                   <a
                     href="#contact"
-                    className="text-white hover:text-primary transition-colors text-sm"
+                    className="text-white hover:text-black transition-colors text-sm"
                   >
                     {item}
                   </a>
@@ -95,19 +99,19 @@ const Footer = () => {
 
         <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-white text-sm mb-4 md:mb-0">
-            © {currentYear} FirstStep Pre School. All rights reserved.
+            © {currentYear}The FirstStep Pre-School. All rights reserved.
           </p>
-          <div className="flex space-x-6">
-            <a href="#" className="text-sm text-white hover:text-primary">
+          {/* <div className="flex space-x-6">
+            <a href="#" className="text-sm text-white ">
               Privacy Policy
             </a>
-            <a href="#" className="text-sm text-white hover:text-primary">
+            <a href="#" className="text-sm text-white  ">
               Terms of Service
             </a>
-            <a href="#" className="text-sm text-white hover:text-primary">
+            <a href="#" className="text-sm text-white  ">
               Cookie Policy
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

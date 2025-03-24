@@ -79,34 +79,43 @@ const Classroom = () => {
               >
                 <Sheet>
                   <SheetTrigger asChild>
-                    <div className="glass-card rounded-xl p-6 h-full hover:shadow-lg transition-all cursor-pointer">
-                      <div className="bg-primary/10 p-3 rounded-lg inline-block mb-4">
+                    <div className="glass-card rounded-xl p-6 h-full bg-white/80 backdrop-blur-xl shadow-xl hover:shadow-2xl transition-all cursor-pointer border border-white/30">
+                      {/* Icon with Gradient Background */}
+                      <div className="p-3 rounded-lg inline-block mb-4 bg-gradient-to-r from-primary to-secondary shadow-md">
                         {React.cloneElement(feature.icon, {
-                          className: "h-6 w-6 text-primary",
+                          className: "h-6 w-6 text-white",
                         })}
                       </div>
-                      <h3 className="font-semibold text-xl mb-3">
+
+                      <h3 className="font-semibold text-xl text-foreground mb-3">
                         {feature.title}
                       </h3>
+
                       <p className="text-muted-foreground">
                         {feature.description}
                       </p>
                     </div>
                   </SheetTrigger>
-                  <SheetContent className="sm:max-w-[50%]">
+
+                  <SheetContent className="sm:max-w-[50%] bg-white/90 backdrop-blur-xl rounded-xl border border-white/30 shadow-2xl transition-all duration-300">
                     <SheetHeader>
-                      <SheetTitle className="flex items-center gap-2 text-2xl">
-                        {React.cloneElement(feature.icon, {
-                          className: "h-6 w-6 text-primary",
-                        })}
+                      <SheetTitle className="flex items-center gap-3 text-2xl font-semibold text-primary">
+                        <div className="p-2 bg-gradient-to-r from-primary to-secondary rounded-md shadow">
+                          {React.cloneElement(feature.icon, {
+                            className: "h-6 w-6 text-white",
+                          })}
+                        </div>
                         {feature.title}
                       </SheetTitle>
-                      <SheetDescription className="text-base text-foreground">
+
+                      <SheetDescription className="text-lg text-muted-foreground leading-relaxed">
                         {feature.description}
                       </SheetDescription>
                     </SheetHeader>
-                    <div className="mt-6 space-y-4">
-                      <p className="text-muted-foreground leading-relaxed">
+
+                    {/* Detailed Info Section */}
+                    <div className="mt-6 space-y-4 text-base text-foreground leading-relaxed">
+                      <p className="p-4 rounded-md bg-muted/20 shadow-inner">
                         {feature.detailedInfo}
                       </p>
                     </div>

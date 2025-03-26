@@ -90,7 +90,7 @@ const Hero = () => {
           <AnimatedElement animation="slide-up" delay={500}>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="#contact"
+                href="#get-in-touch"
                 className="px-6 py-3 rounded-full bg-blue-500 text-white font-medium transition-all hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1"
               >
                 Schedule a Visit

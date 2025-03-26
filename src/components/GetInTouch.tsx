@@ -247,10 +247,10 @@ const GetInTouch = () => {
               <CardContent>
                 <p className="text-sm font-medium">Monday - Friday:</p>
                 <p className="text-lg font-medium text-primary">
-                  7:00 AM - 6:00 PM
+                  9:00 AM - 4:00 PM
                 </p>
                 <p className="text-sm font-medium mt-2">Saturday </p>
-                <p className="text-primary"> 7:00 AM - 2:00 PM</p>
+                <p className="text-primary"> 9:00 AM - 1:00 PM</p>
                 <p className="text-sm font-medium mt-2">
                   Second Saturday - sunday
                 </p>
@@ -287,15 +287,11 @@ const GetInTouch = () => {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <p className="text-lg font-medium text-primary  ">
-                      Road no:1, Balaji Nagar-2, ITI Circle, Dist, beside ITI
-                      Circle, Tilak Nagar, balaji bridge, Kadapa, Andhra Pradesh
-                      516003
+                      Balaji Nagar-2, ITI Circle,Kadapa,Kadapa dist, AP- 516003
                     </p>
                   </TooltipTrigger>
                   <TooltipContent>
-                    Road no:1, Balaji Nagar-2, ITI Circle, Dist, beside ITI
-                    Circle, Tilak Nagar, balaji bridge, Kadapa, Andhra Pradesh
-                    516003
+                    Balaji Nagar-2, ITI Circle,Kadapa,Kadapa dist, AP- 516003
                   </TooltipContent>
                 </Tooltip>
                 <p className="text-sm font-medium mt-2">Additional Branches:</p>

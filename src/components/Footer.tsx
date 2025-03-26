@@ -4,10 +4,42 @@ import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const socialLinks = [
-    { name: "facebook", icon: <Facebook />, url: "#" },
-    { name: "instagram", icon: <Instagram />, url: "#" },
-    { name: "twitter", icon: <Twitter />, url: "#" },
-    { name: "youtube", icon: <Youtube />, url: "#" },
+    {
+      name: "instagram",
+      icon: (
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+          alt="Instagram"
+          width="24"
+          height="24"
+        />
+      ),
+      url: "https://www.instagram.com/the_first_step_preschool?utm_source=qr&igsh=MXVhdGFleW94Znh1YQ==",
+    },
+    {
+      name: "whatsapp",
+      icon: (
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+          alt="WhatsApp"
+          width="24"
+          height="24"
+        />
+      ),
+      url: "https://whatsapp.com/channel/0029VaMOLGz6RGJHBzsBTe3W",
+    },
+    {
+      name: "youtube",
+      icon: (
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg"
+          alt="YouTube"
+          width="24"
+          height="24"
+        />
+      ),
+      url: "https://youtube.com/@thefirststeppreschool-kdp?si=KA8u9cQvFm1C9Qb2",
+    },
   ];
   return (
     <footer className="bg-primary text-white border-t border-border py-12">
@@ -44,6 +76,7 @@ const Footer = () => {
                   <a
                     href={`#${item.toLowerCase()}`}
                     className="text-white hover:text-black transition-colors text-sm"
+                    target="_blank"
                   >
                     {item}
                   </a>
@@ -56,11 +89,11 @@ const Footer = () => {
             <h4 className="font-medium text-lg mb-4">Programs</h4>
             <ul className="space-y-2">
               {[
-                "Daycare (0-2 years)",
-                "Preschool (2-3 years)",
-                "Pre-KG (4-5 years)",
-                "Junior KG (5-6 years)",
-                "Senior KG (6-7 years)",
+                "Daycare  ",
+                "Preschool  ",
+                "Pre-KG  ",
+                "Junior KG  ",
+                "Senior KG  ",
               ].map((item) => (
                 <li key={item}>
                   <a

@@ -207,7 +207,7 @@ const Testimonials = () => {
               <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-all">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-purple-500 mb-2">
-                    200+
+                    100+
                   </div>
                   <div className="text-sm text-gray-600">Children Educated</div>
                 </div>

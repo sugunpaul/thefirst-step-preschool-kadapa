@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Shield, Heart, Book, Calendar, CheckCircle } from "lucide-react";
 import AnimatedElement from "./AnimatedElement";
 
 const Hero = () => {
+  const [isDesktopMode, setIsDesktopMode] = useState(false);
+  useEffect(() => {
+    const checkDesktopMode = () => {
+      // If device width is small but zoomed out (desktop mode)
+      setIsDesktopMode(window.innerWidth / window.outerWidth > 0.9);
+    };
+
+    // Check on mount and when resized
+    checkDesktopMode();
+    window.addEventListener("resize", checkDesktopMode);
+
+    return () => window.removeEventListener("resize", checkDesktopMode);
+  }, []);
   return (
     <section
       id="home"
@@ -138,7 +151,9 @@ const Hero = () => {
               <img
                 src="/images/main.jpeg"
                 alt="Preschool children engaged in learning activities"
-                className="w-full h-full object-cover"
+                className={`${
+                  isDesktopMode ? "block" : "hidden sm:block lg:block"
+                } w-full h-full object-cover`}
               />
             </div>
             <AnimatedElement

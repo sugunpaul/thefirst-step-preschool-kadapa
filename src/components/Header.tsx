@@ -6,6 +6,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const isMobile = useIsMobile();
 
   const navItems = [
@@ -26,16 +27,29 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  useEffect(() => {
+    // Prevent background scrolling when the modal is open
+    if (isMobileMenuOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }, [isMobileMenuOpen]);
 
   return (
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4",
-        isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-transparent"
+        isMobileMenuOpen
+          ? "bg-white shadow-md" // Apply when mobile menu is open
+          : isScrolled
+          ? "bg-white/80 backdrop-blur-md shadow-sm" // Apply when scrolled
+          : "bg-transparent" // Default
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
+          {/* Logo */}
           <a
             href="#home"
             className="flex items-center space-x-2 text-primary no-select"
@@ -75,41 +89,52 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             className="md:hidden text-foreground"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Open menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <Menu size={24} />
           </button>
         </div>
       </div>
 
-      {/* Mobile Navigation Overlay */}
-      <div
-        className={cn(
-          "fixed inset-0 bg-background/95 backdrop-blur-sm z-40 transition-all duration-300 flex flex-col md:hidden pt-24",
-          isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        )}
-      >
-        <nav className="flex flex-col items-center space-y-8 p-8">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="font-medium text-xl"
+      {/* Mobile Modal Menu */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+          {/* Modal Content */}
+          <div className=" w-full h-full flex items-center justify-center bg-white rounded-lg shadow-xl w-11/12 max-w-sm p-6 relative sm:hidden">
+            {/* Close Button */}
+            <button
+              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
               onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close menu"
             >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href="tel:9493866446"
-            className="flex items-center gap-2 font-medium text-lg"
-          >
-            <Phone className="h-5 w-5 text-primary" />
-            <span>8125511911</span>
-          </a>
-        </nav>
-      </div>
+              <X size={24} />
+            </button>
+
+            {/* Navigation Links */}
+            <nav className="flex flex-col items-center space-y-6 mt-4">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-lg font-medium text-gray-800 hover:text-primary transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+              {/* Contact Number */}
+              <a
+                href="tel:9493866446"
+                className="flex items-center gap-2 text-lg font-medium text-gray-800"
+              >
+                <Phone className="h-5 w-5 text-primary" />
+                <span>8125511911</span>
+              </a>
+            </nav>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

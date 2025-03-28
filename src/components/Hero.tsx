@@ -4,18 +4,23 @@ import { Shield, Heart, Book, Calendar, CheckCircle } from "lucide-react";
 import AnimatedElement from "./AnimatedElement";
 
 const Hero = () => {
-  const [isDesktopMode, setIsDesktopMode] = useState(false);
+  const [showImage, setShowImage] = useState(false);
   useEffect(() => {
-    const checkDesktopMode = () => {
-      // If device width is small but zoomed out (desktop mode)
-      setIsDesktopMode(window.innerWidth / window.outerWidth > 0.9);
+    const detectDesktopMode = () => {
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isMobile = /android|iphone|ipad|ipod/.test(userAgent);
+      const isDesktopView =
+        window.innerWidth > 1024 ||
+        window.innerWidth / window.outerWidth > 0.85;
+
+      // Show image if either it's a desktop or mobile in "Desktop Site" mode
+      setShowImage(!isMobile || isDesktopView);
     };
 
-    // Check on mount and when resized
-    checkDesktopMode();
-    window.addEventListener("resize", checkDesktopMode);
+    detectDesktopMode();
+    window.addEventListener("resize", detectDesktopMode);
 
-    return () => window.removeEventListener("resize", checkDesktopMode);
+    return () => window.removeEventListener("resize", detectDesktopMode);
   }, []);
   return (
     <section
@@ -152,7 +157,7 @@ const Hero = () => {
                 src="/images/main.jpeg"
                 alt="Preschool children engaged in learning activities"
                 className={`${
-                  isDesktopMode ? "block" : "hidden sm:block lg:block"
+                  showImage ? "block" : "hidden"
                 } w-full h-full object-cover`}
               />
             </div>

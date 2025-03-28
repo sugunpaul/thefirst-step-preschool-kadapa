@@ -43,7 +43,7 @@ const Hero = () => {
         ></div>
       </div>
 
-      <div className="section-container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="section-container grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
         {/* Left Content */}
         <div>
           <AnimatedElement animation="scale-in" delay={100}>

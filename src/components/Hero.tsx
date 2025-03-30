@@ -138,7 +138,7 @@ const Hero = () => {
         </div>
 
         {/* Right Content - Hero Image */}
-        <div className="hidden lg:block">
+        <div className="hidden sm:block">
           <AnimatedElement
             animation="scale-in"
             delay={200}
@@ -156,9 +156,7 @@ const Hero = () => {
               <img
                 src="/images/main.jpeg"
                 alt="Preschool children engaged in learning activities"
-                className={`${
-                  showImage ? "block" : "hidden"
-                } w-full h-full object-cover`}
+                className=" w-full h-full object-cover" 
               />
             </div>
             <AnimatedElement

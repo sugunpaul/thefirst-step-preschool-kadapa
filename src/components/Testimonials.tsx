@@ -5,33 +5,51 @@ import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "Parent of Alex, Age 4",
+    name: "RATHNAKARAM KSSVP BALARAJU (Balaraju)",
+     role: "5 months ago",
     content:
-      "FirstStep has been a blessing for our family. My son has flourished academically and socially. The teachers truly care about each child's development.",
+      "I highly recommend this school! The teachers are incredibly friendly, making learning fun for kids. Their unique approach to education is truly excellent, evident in the children's enthusiasm and progress. I'm confident your child will progress day by day.",
     rating: 5,
   },
   {
-    name: "Michael Rodriguez",
-    role: "Parent of Emma, Age 3",
+    name: "Harish Kumar Aelugoti",
+    role: "8 months ago",
     content:
-      "We've tried several preschools, but FirstStep is exceptional. The curriculum is engaging, and the staff creates such a warm environment. My daughter can't wait to go to school each day!",
+      "The First Step Preschool I visited had clean and well-maintained facilities. The staff were friendly with a good rapport with the children. The curriculum seemed balanced between play-based learning and academics. Safety measures were in place. Fees were reasonable. Overall, my instincts were positive. I highly recommend this play school for your kid.",
     rating: 5,
   },
   {
-    name: "Jennifer Lee",
-    role: "Parent of Twins, Age 4",
+    name: "sandyasunil",
+    role: " 8 months ago",
     content:
-      "As a parent of twins, I was concerned about individual attention. The teachers at FirstStep go above and beyond to nurture each child's unique personality and learning style.",
+      "We are extremely happy parents with first step preschool. Great teaching staff and sunil who focus  on overall development of child. We are satisfied the way the school has taught our son. thank you",
     rating: 5,
   },
   {
-    name: "David Thompson",
-    role: "Parent of Noah, Age 4",
+    name: "srujan kumar reddy kalluri",
+    role: "5 months ago",
     content:
-      "The progress my son has made with his communication skills has been remarkable. The structured yet nurturing approach at FirstStep is exactly what he needed.",
+      "School is wonderful for kids and the ambience to learn is envisioned clearly, the enthusiastic teachers are truly commendable for their work",
     rating: 5,
   },
+  {
+    name: "Ashish Kumar",
+    role: "8 months ago",
+    content:
+      "We are incredibly grateful for the nurturing and supportive environment which school has created. Our child has flourished under your care.",
+    rating: 4.5,
+  },  {
+    name: "srujan kumar reddy kalluri",
+    role: "5 months ago",
+    content:
+      "I recommend First Step preschool for number of reasons Clean Environment, Organized Classrooms, professional staff . Safety has been given a top priority for the kids.",
+    rating: 5,
+  },  {
+    name: "Vamsi krishna",
+    role: "9 months ago",
+    content:"The First step Preschool: is not Babysitting and It's not comparable to any child care centre.The First step Preschool is like a second Home, which provides a good environment for kids with professional care providers and their love, caring and Teaching to the kids is very passionate about their job 🙂",
+     rating: 5,
+  },   
 ];
 
 const Testimonials = () => {

@@ -12,7 +12,7 @@ import {
 } from "../ui/sheet";
 
 interface FeatureItem {
-  icon: React.ReactNode;
+  icon: React.ReactElement; // Changed from ReactNode to ReactElement
   title: string;
   description: string;
   detailedInfo: string;

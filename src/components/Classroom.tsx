@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AnimatedElement from "./AnimatedElement";
-import { Sparkles, Heart, Brain, Users, X } from "lucide-react";
+import { Sparkles, Heart, Brain, Users } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -9,14 +9,13 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
-import * as SliderPrimitive from "@radix-ui/react-slider";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
 const Classroom = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const features = [
     {
       icon: <Sparkles className="h-6 w-6" />,
@@ -52,6 +51,14 @@ const Classroom = () => {
     },
   ];
 
+  const classroomImages = [
+    "/images/classRoom-1.jpeg",
+    "/images/classRoom-2.jpeg",
+    "/images/classRoom-3.jpeg",
+    "/images/classRoom-4.jpg",
+    "/images/classRoom-5.jpg",
+  ];
+
   return (
     <>
       <section id="about" className="py-20 bg-white">
@@ -80,7 +87,6 @@ const Classroom = () => {
                 <Sheet>
                   <SheetTrigger asChild>
                     <div className="glass-card rounded-xl p-6 h-full bg-white/80 backdrop-blur-xl shadow-xl hover:shadow-2xl transition-all cursor-pointer border border-white/30">
-                      {/* Icon with Gradient Background */}
                       <div className="p-3 rounded-lg inline-block mb-4 bg-gradient-to-r from-primary to-secondary shadow-md">
                         {React.cloneElement(feature.icon, {
                           className: "h-6 w-6 text-white",
@@ -113,11 +119,10 @@ const Classroom = () => {
                       </SheetDescription>
                     </SheetHeader>
 
-                    {/* Detailed Info Section */}
                     <div className="mt-6 space-y-4 text-base text-foreground leading-relaxed">
-                      <p className="p-4 rounded-md bg-muted/20 shadow-inner">
+                      <div className="p-4 rounded-md bg-muted/20 shadow-inner">
                         {feature.detailedInfo}
-                      </p>
+                      </div>
                     </div>
                   </SheetContent>
                 </Sheet>
@@ -145,7 +150,6 @@ const Classroom = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedElement animation="slide-up" delay={100}>
               <div className="relative w-full max-w-2xl mx-auto">
-                {/* Swiper Container */}
                 <Swiper
                   slidesPerView={1}
                   pagination={{ clickable: true }}
@@ -154,56 +158,27 @@ const Classroom = () => {
                     prevEl: ".swiper-button-prev",
                   }}
                   autoplay={{ delay: 3000, disableOnInteraction: false }}
-                  speed={1200} // Smooth transition speed
+                  speed={1200}
                   loop={true}
                   modules={[Navigation, Pagination, Autoplay]}
-                  className="w-full h-80"
+                  className="w-full rounded-xl overflow-hidden shadow-xl h-96"
                 >
-                  {/* First Slide - Custom Div */}
-                  <SwiperSlide>
-                    <img
-                      src="/images/classRoom-1.jpeg"
-                      alt="Slide 1"
-                      className="w-full h-full object-cover"
-                    />
-                  </SwiperSlide>
-                  {/* Second Slide - Example Image */}
-                  <SwiperSlide>
-                    <img
-                      src="/images/classRoom-2.jpeg"
-                      alt="Slide 1"
-                      className="w-full h-full object-cover"
-                    />
-                  </SwiperSlide>
-                  {/* Third Slide - Example Image */}
-                  <SwiperSlide>
-                    <img
-                      src="/images/classRoom-3.jpeg"
-                      alt="Slide 2"
-                      className="w-full h-full object-cover"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="/images/classRoom-4.jpg"
-                      alt="Slide 2"
-                      className="w-full h-full object-cover"
-                    />
-                  </SwiperSlide>{" "}
-                  <SwiperSlide>
-                    <img
-                      src="/images/classRoom-5.jpg"
-                      alt="Slide 2"
-                      className="w-full h-full object-cover"
-                    />
-                  </SwiperSlide>
+                  {classroomImages.map((image, index) => (
+                    <SwiperSlide key={index}>
+                      <img
+                        src={image}
+                        alt={`Classroom environment ${index + 1}`}
+                        className="w-full h-full object-cover"
+                        onError={(e) => console.error(`Failed to load image: ${image}`)}
+                      />
+                    </SwiperSlide>
+                  ))}
                 </Swiper>
 
-                {/* Custom Navigation Buttons */}
-                <button className="swiper-button-prev absolute top-1/2 -left-6 transform -translate-y-1/2 bg-black/50   rounded-full text-white hover:bg-black">
+                <button className="swiper-button-prev absolute top-1/2 -left-6 transform -translate-y-1/2 bg-black/50 w-12 h-12 rounded-full flex items-center justify-center text-white hover:bg-black z-10">
                   <ChevronLeft size={20} />
                 </button>
-                <button className="swiper-button-next absolute top-1/2 -right-6 transform -translate-y-1/2 bg-black/50   rounded-full text-white hover:bg-black">
+                <button className="swiper-button-next absolute top-1/2 -right-6 transform -translate-y-1/2 bg-black/50 w-12 h-12 rounded-full flex items-center justify-center text-white hover:bg-black z-10">
                   <ChevronRight size={20} />
                 </button>
               </div>
